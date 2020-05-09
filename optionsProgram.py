@@ -98,7 +98,33 @@ def coveredCall():
     coveredYield = premium + stockPrice - purchasePrice
     print('The investors current yield is ' + str(coveredYield))
 
-option = pyip.inputMenu(['call','put','covered call','q'], numbered = True)
+# Calculating a married put, where the the investor has some downside insurance if the stock were to fall
+# below the put price.Capital preserving strategy and limits the downside risk.
+
+# I think this one needs to be worked on and understood more to properly write the code.
+# THIS NEEDS TO BE WORKED ON BUT THE SKELETON IS THERE
+
+def marriedPut():
+    # Get the purchase price of the stock.
+    purchasePrice = pyip.inputNum("Enter the price of the stock the investor paid: ")
+
+    # Get the price paid for the put.
+    putPrice = pyip.inputNum("Enter the price of the put the investor paid: ")
+
+    # Strike price of the option.
+    strikePrice = pyip.inputNum("Enter the strike price of the put: ")
+
+    # Current price of the stock.
+    stockPrice = pyip.inputNum("Enter the current price of the stock: ")
+
+    # Current yield of the strategy.
+    marriedPutYield = stockPrice - purchasePrice - putPrice
+
+    print("The current yield of the strategy is: " + str(marriedPutYield))
+
+
+
+option = pyip.inputMenu(['call','put','covered call','married put','q'], numbered = True)
 
 if option == 'call':
     time.sleep(execSleep)
@@ -112,6 +138,10 @@ elif option == 'covered call':
     time.sleep(execSleep)
     print('Starting the calculation of a covered call.')
     coveredCall()
+elif option == 'married put':
+    time.sleep(execSleep)
+    print('Starting the calculation of a married put.')
+    marriedPut()
 elif option == 'q':
     time.sleep(execSleep)
     print('Stopping execution of the program.')
