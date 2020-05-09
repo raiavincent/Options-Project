@@ -6,6 +6,7 @@
 # Round all outputs to two decimal places.
 # Add a global q for quit at any point in the program.
 # Maybe and delays before each function starts just to make it look nicer.
+# What may be nice is to generate a chart for profitability.
 
 
 import pandas
