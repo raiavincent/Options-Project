@@ -113,5 +113,6 @@ elif option == 'covered call':
     print('Starting the calculation of a covered call.')
     coveredCall()
 elif option == 'q':
+    time.sleep(execSleep)
     print('Stopping execution of the program.')
     sys.exit()
