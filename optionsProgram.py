@@ -1,5 +1,6 @@
 # start of the build out of the options program
-# starting super simple and calculating the current profitability of the option
+# starting super simple and calculating the current
+# profitability of the option before any web scraping or anything like that
 
 import pandas
 import matplotlib
@@ -8,19 +9,67 @@ import yfinance
 import bs4 # for the web scraping on yahoo finance
 import pprint
 import pyinputplus as pyip
+import os
+import sys
 
-# Start by getting the current price of the option.
+# Calculating call option
 
-optionPrice = pyip.inputNum("Enter the current price of the option contract: ")
+# Start defining the calculations.
 
-# Next we will get the price of the stock.
+def callCalc():
+    optionPrice = pyip.inputNum("Enter the current price of the option contract: ")
 
-stockPrice = pyip.inputNum("Enter the current price of the stock: ")
+    # Next we will get the price of the stock.
 
-# Maybe I also need the strike price of the option
+    stockPrice = pyip.inputNum("Enter the current price of the stock: ")
 
-strikePrice = pyip.inputNum("Enter the strike price associated with the contract: ")
+    # Maybe I also need the strike price of the option.
 
-# Probably also need the premium!
+    strikePrice = pyip.inputNum("Enter the strike price associated with the contract: ")
 
-premium = pyip.inputNum("Enter the premium associated with the option: ")
+    # Calculating the intrinsic value of the option.
+
+    intrinsicValue = stockPrice - strikePrice
+
+    print("The current intrinsic value is " + str(intrinsicValue))
+
+    # Calculating the time value of the option
+
+    timeValue = optionPrice - intrinsicValue
+
+    print("The current time value is " + str(timeValue))
+
+def putCalc():
+    optionPrice = pyip.inputNum("Enter the current price of the option contract: ")
+
+    # Next we will get the price of the stock.
+
+    stockPrice = pyip.inputNum("Enter the current price of the stock: ")
+
+    # Maybe I also need the strike price of the option.
+
+    strikePrice = pyip.inputNum("Enter the strike price associated with the contract: ")
+
+    # Calculating the intrinsic value of the option.
+
+    intrinsicValue = strikePrice - stockPrice
+
+    print("The current intrinsic value is " + str(intrinsicValue))
+
+    # Calculating the time value of the option
+
+    timeValue = optionPrice - intrinsicValue
+
+    print("The current time value is " + str(timeValue))
+
+option = pyip.inputMenu(['call','put','q'], numbered = True)
+
+if option == 'call':
+    print('Starting call option calculation.')
+    callCalc()
+elif option == 'put':
+    print('Starting put option calculation.')
+    putCalc()
+elif option == 'q':
+    print('Stopping execution of the program.')
+    sys.exit()
