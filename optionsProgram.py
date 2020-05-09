@@ -4,6 +4,7 @@
 
 # UP TOP TO DO:
 # Round all outputs to two decimal places.
+# add a global q for quit at any point in the program.
 
 
 import pandas
