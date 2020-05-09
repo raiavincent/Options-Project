@@ -5,7 +5,7 @@
 # UP TOP TO DO:
 # Round all outputs to two decimal places.
 # Add a global q for quit at any point in the program.
-# Maybe and delays before each function starts just to make it look nicer.
+# DONE: Maybe add delays before each function starts just to make it look nicer.
 # What may be nice is to generate a chart for profitability.
 
 
@@ -18,6 +18,11 @@ import pprint
 import pyinputplus as pyip
 import os
 import sys
+import time
+
+# Adding global variables up here.
+
+execSleep = 1.5
 
 # Calculations on call option,
 
@@ -96,12 +101,15 @@ def coveredCall():
 option = pyip.inputMenu(['call','put','covered call','q'], numbered = True)
 
 if option == 'call':
+    time.sleep(execSleep)
     print('Starting call option calculation.')
     callCalc()
 elif option == 'put':
+    time.sleep(execSleep)
     print('Starting put option calculation.')
     putCalc()
 elif option == 'covered call':
+    time.sleep(execSleep)
     print('Starting the calculation of a covered call.')
     coveredCall()
 elif option == 'q':
