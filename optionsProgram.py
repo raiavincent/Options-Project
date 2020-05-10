@@ -3,10 +3,10 @@
 # profitability of the option before any web scraping or anything like that
 
 # UP TOP TO DO:
-# Round all outputs to two decimal places.
-# Add a global q for quit at any point in the program.
+# TODO: Round all outputs to two decimal places.
+# TODO: Add a global q for quit at any point in the program.
 # DONE: Maybe add delays before each function starts just to make it look nicer.
-# What may be nice is to generate a chart for profitability.
+# TODO: What may be nice is to generate a chart for profitability.
 
 
 import pandas
@@ -43,13 +43,13 @@ def callCalc():
 
     intrinsicValue = stockPrice - strikePrice
 
-    print("The current intrinsic value is " + str(intrinsicValue))
+    print("The current intrinsic value is " + str(intrinsicValue) + ".")
 
     # Calculating the time value of the option
 
     timeValue = optionPrice - intrinsicValue
 
-    print("The current time value is " + str(timeValue))
+    print("The current time value is " + str(timeValue) + ".")
 
 # Calculations on put option.
 
@@ -68,13 +68,13 @@ def putCalc():
 
     intrinsicValue = strikePrice - stockPrice
 
-    print("The current intrinsic value is " + str(intrinsicValue))
+    print("The current intrinsic value is " + str(intrinsicValue) + ".")
 
     # Calculating the time value of the option
 
     timeValue = optionPrice - intrinsicValue
 
-    print("The current time value is " + str(timeValue))
+    print("The current time value is " + str(timeValue) + ".")
 
 # Calculating a covered call, which is where an investor may like the stock, but to cover some downside risk in the mean
 # time, will sell a call option to generate income on the premiums.
@@ -96,13 +96,14 @@ def coveredCall():
     # And determin the yield currently as of now.
 
     coveredYield = premium + stockPrice - purchasePrice
-    print('The investors current yield is ' + str(coveredYield))
+    print('The investors current yield is ' + str(coveredYield)+ '.')
 
 # Calculating a married put, where the the investor has some downside insurance if the stock were to fall
 # below the put price.Capital preserving strategy and limits the downside risk.
 
 # I think this one needs to be worked on and understood more to properly write the code.
 # THIS NEEDS TO BE WORKED ON BUT THE SKELETON IS THERE
+# Maybe not even include this? Keep it for now.
 
 def marriedPut():
     # Get the purchase price of the stock.
@@ -122,9 +123,23 @@ def marriedPut():
 
     print("The current yield of the strategy is: " + str(marriedPutYield))
 
+# Spreads, start with credit.
+# TODO: Simulation as to changes in the strike prices and the profit change.
 
+def creditSpread():
+        # First need the price of the high premium option to be sold.
+        highPrem = pyip.inputNum("Enter the price of the high-premium option to be sold: ")
 
-option = pyip.inputMenu(['call','put','covered call','married put','q'], numbered = True)
+        # Next the price of the lower premium option to be bought.
+        lowPrem = pyip.inputNum("Enter the price of the low-premium option to be bought: ")
+
+        # Current profit of the spread.
+        netPremium = highPrem - lowPrem
+
+        # And print it.
+        print("The investor has a net premium of " + str(netPremium) + ".")
+
+option = pyip.inputMenu(['call','put','covered call','married put','credit spread','q'], numbered = True)
 
 if option == 'call':
     time.sleep(execSleep)
@@ -142,6 +157,10 @@ elif option == 'married put':
     time.sleep(execSleep)
     print('Starting the calculation of a married put.')
     marriedPut()
+elif option == 'credit spread':
+    time.sleep(execSleep)
+    print('Starting the credit spread calculation.')
+    creditSpread()
 elif option == 'q':
     time.sleep(execSleep)
     print('Stopping execution of the program.')
