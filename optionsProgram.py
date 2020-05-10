@@ -139,7 +139,21 @@ def creditSpread():
         # And print it.
         print("The investor has a net premium of " + str(netPremium) + ".")
 
-option = pyip.inputMenu(['call','put','covered call','married put','credit spread','q'], numbered = True)
+def debitSpread():
+    # First need the price of the high premium option to be sold.
+    highPrem = pyip.inputNum("Enter the price of the high-premium option to be bought: ")
+
+    # Next the price of the lower premium option to be bought.
+    lowPrem = pyip.inputNum("Enter the price of the low-premium option to be sold: ")
+
+    # Current profit of the spread.
+    netPremium = lowPrem - highPrem
+
+    # And print it.
+    print("The investor has netted $" + str(netPremium) + " on the trade currently.")
+
+
+option = pyip.inputMenu(['call','put','covered call','married put','credit spread','debit spread','q'], numbered = True)
 
 if option == 'call':
     time.sleep(execSleep)
@@ -161,6 +175,10 @@ elif option == 'credit spread':
     time.sleep(execSleep)
     print('Starting the credit spread calculation.')
     creditSpread()
+elif option == 'debit spread':
+    time.sleep(execSleep)
+    print('Starting the debit spread calculation.')
+    debitSpread()
 elif option == 'q':
     time.sleep(execSleep)
     print('Stopping execution of the program.')
