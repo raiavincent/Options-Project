@@ -93,7 +93,7 @@ def coveredCall():
 
     stockPrice = pyip.inputNum("Enter the current price of the stock to determine the investor's yield: ")
 
-    # And determin the yield currently as of now.
+    # And determine the yield currently as of now.
 
     coveredYield = premium + stockPrice - purchasePrice
     print('The investors current yield is ' + str(coveredYield)+ '.')
@@ -118,10 +118,18 @@ def marriedPut():
     # Current price of the stock.
     stockPrice = pyip.inputNum("Enter the current price of the stock: ")
 
-    # Current yield of the strategy.
-    marriedPutYield = stockPrice - purchasePrice - putPrice
+    netDebit = stockPrice + putPrice
+    breakEven = netDebit
+    maximumRisk = netDebit - strikePrice
+    percentMaxRisk = maximumRisk / netDebit
 
-    print("The current yield of the strategy is: " + str(marriedPutYield))
+    percentageRisk = "{:.2%}".format(percentMaxRisk)
+
+    print('Outlay: ' + str(netDebit))
+    print('(This is also the break even point.)')
+    print('Maximum Risk: ' + str(maximumRisk))
+    print('Investor is risking ' + str(percentageRisk) + ' of the outlay.')
+    print('The investor has a maximum profit that is unlimited.')
 
 # Spreads, start with credit.
 # TODO: Simulation as to changes in the strike prices and the profit change.
