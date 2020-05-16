@@ -6,7 +6,7 @@
 # TODO: Round all outputs to two decimal places.
 # TODO: Add a global q for quit at any point in the program.
 # DONE: Maybe add delays before each function starts just to make it look nicer.
-# TODO: What may be nice is to generate a chart for profitability.
+# TODO: Generate a chart for profitability.
 # TODO: Add descriptions of each strategy at the start.
 
 
@@ -14,7 +14,7 @@ import pandas
 import matplotlib
 import numpy
 import yfinance
-import bs4 # for the web scraping on yahoo finance
+import bs4  # for the web scraping on yahoo finance
 import pprint
 import pyinputplus as pyip
 import os
@@ -23,9 +23,10 @@ import time
 
 # Adding global variables up here.
 
-execSleep = 1.5 # Before starting execution of the function to calculate.
-definitionSleep = 3 # Giving user time to read the definition.
-startSleep = 1 # Print the option chosen and then starting with a slight delay.
+execSleep = 1.5  # Before starting execution of the function to calculate.
+definitionSleep = 3  # Giving user time to read the definition.
+startSleep = 1  # Print the option chosen and then starting with a slight delay.
+
 
 # Calculations on call option,
 
@@ -54,6 +55,7 @@ def callCalc():
 
     print("The current time value is " + str(timeValue) + ".")
 
+
 # Calculations on put option.
 
 def putCalc():
@@ -79,11 +81,11 @@ def putCalc():
 
     print("The current time value is " + str(timeValue) + ".")
 
+
 # Calculating a covered call, which is where an investor may like the stock, but to cover some downside risk in the mean
 # time, will sell a call option to generate income on the premiums.
 
 def coveredCall():
-
     # Stock price first, this is what the investor bought the stock at.
 
     purchasePrice = pyip.inputNum("Enter the price of the stock the investor paid: ")
@@ -99,7 +101,8 @@ def coveredCall():
     # And determine the yield currently as of now.
 
     coveredYield = premium + stockPrice - purchasePrice
-    print('The investors current yield is ' + str(coveredYield)+ '.')
+    print('The investors current yield is ' + str(coveredYield) + '.')
+
 
 # Calculating a married put, where the the investor has some downside insurance if the stock were to fall
 # below the put price.Capital preserving strategy and limits the downside risk.
@@ -134,21 +137,23 @@ def marriedPut():
     print('Investor is risking ' + str(percentageRisk) + ' of the outlay.')
     print('The investor has a maximum profit that is unlimited.')
 
+
 # Spreads, start with credit.
 # TODO: Simulation as to changes in the strike prices and the profit change.
 
 def creditSpread():
-        # First need the price of the high premium option to be sold.
-        highPrem = pyip.inputNum("Enter the price of the high-premium option to be sold: ")
+    # First need the price of the high premium option to be sold.
+    highPrem = pyip.inputNum("Enter the price of the high-premium option to be sold: ")
 
-        # Next the price of the lower premium option to be bought.
-        lowPrem = pyip.inputNum("Enter the price of the low-premium option to be bought: ")
+    # Next the price of the lower premium option to be bought.
+    lowPrem = pyip.inputNum("Enter the price of the low-premium option to be bought: ")
 
-        # Current profit of the spread.
-        netPremium = highPrem - lowPrem
+    # Current profit of the spread.
+    netPremium = highPrem - lowPrem
 
-        # And print it.
-        print("The investor has a net premium of " + str(netPremium) + ".")
+    # And print it.
+    print("The investor has a net premium of " + str(netPremium) + ".")
+
 
 def debitSpread():
     # First need the price of the high premium option to be sold.
@@ -164,7 +169,8 @@ def debitSpread():
     print("The investor has netted $" + str(netPremium) + " on the trade currently.")
 
 
-option = pyip.inputMenu(['call','put','covered call','married put','credit spread','debit spread','q'], numbered = True)
+option = pyip.inputMenu(['call', 'put', 'covered call', 'married put', 'credit spread', 'debit spread', 'q'],
+                        numbered=True)
 
 if option == 'call':
     print('Call option selected.')
