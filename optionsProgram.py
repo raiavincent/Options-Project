@@ -7,6 +7,7 @@
 # TODO: Add a global q for quit at any point in the program.
 # DONE: Maybe add delays before each function starts just to make it look nicer.
 # TODO: What may be nice is to generate a chart for profitability.
+# TODO: Add descriptions of each strategy at the start.
 
 
 import pandas
@@ -22,7 +23,9 @@ import time
 
 # Adding global variables up here.
 
-execSleep = 1.5
+execSleep = 1.5 # Before starting execution of the function to calculate.
+definitionSleep = 3 # Giving user time to read the definition.
+startSleep = 1 # Print the option chosen and then starting with a slight delay.
 
 # Calculations on call option,
 
@@ -164,30 +167,62 @@ def debitSpread():
 option = pyip.inputMenu(['call','put','covered call','married put','credit spread','debit spread','q'], numbered = True)
 
 if option == 'call':
-    time.sleep(execSleep)
+    print('Call option selected.')
+    time.sleep(startSleep)
+    print('A call option gives an investor the right, but not the obligation, to buy a stock at a certain price, '
+          'the strike price')
+    time.sleep(definitionSleep)
     print('Starting call option calculation.')
+    time.sleep(execSleep)
     callCalc()
 elif option == 'put':
+    print('Put option selected.')
+    time.sleep(startSleep)
+    print('A put option gives an investor the right, but not the obligation, to sell a stock at a certain price, '
+          'the strike price.')
     time.sleep(execSleep)
     print('Starting put option calculation.')
     putCalc()
 elif option == 'covered call':
+    print('Covered call strategy selected.')
+    time.sleep(startSleep)
+    print('A covered call is a transaction where an investor sells a call option and owns the equivalent amount of '
+          'the underlying security. To execute, the investor is long the asset then sells calls on the same asset to '
+          'generate income. This is a neutral strategy, meaning the investor only expects a minor increase in the '
+          'underlying stock price of the written call opttion. Usually employed if an investor wants to hold the '
+          'stock for a long time but does not expect near term appreciation, so generates income from the option '
+          'premium.')
     time.sleep(execSleep)
     print('Starting the calculation of a covered call.')
     coveredCall()
 elif option == 'married put':
+    print('Married put strategy selected.')
+    time.sleep(startSleep)
+    print('A married put is a strategy where an investor is long the asset and purchases an at the money put option '
+          'on the same asset to protect against depreciation of said asset. The investor essentially protects against '
+          'the downside risk yet can still participate in any gains from the upside. ')
     time.sleep(execSleep)
     print('Starting the calculation of a married put.')
     marriedPut()
 elif option == 'credit spread':
+    print('Credit spread selected.')
+    time.sleep(startSleep)
+    print('A credit spread involves the sale of a high premium option followed by the purchase of a lower premium '
+          'option. Premium received from writing is greater than purchasing, resulting in a premium. This is the '
+          'maximum profit.')
     time.sleep(execSleep)
     print('Starting the credit spread calculation.')
     creditSpread()
 elif option == 'debit spread':
+    print('Debit spread selected.')
+    time.sleep(startSleep)
+    print('A debit spread involves buying a high premium option and then selling an option at a lower premium. This '
+          'results in a premium paid by the investor. Used to offset the costs associated with owning long options '
+          'positions.')
     time.sleep(execSleep)
     print('Starting the debit spread calculation.')
     debitSpread()
 elif option == 'q':
     time.sleep(execSleep)
-    print('Stopping execution of the program.')
+    print('lol q is not a strategy, you just stopped the program.')
     sys.exit()
