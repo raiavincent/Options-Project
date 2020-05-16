@@ -170,7 +170,7 @@ if option == 'call':
     print('Call option selected.')
     time.sleep(startSleep)
     print('A call option gives an investor the right, but not the obligation, to buy a stock at a certain price, '
-          'the strike price')
+          'the strike price.')
     time.sleep(definitionSleep)
     print('Starting call option calculation.')
     time.sleep(execSleep)
