@@ -3,11 +3,11 @@
 # profitability of the option before any web scraping or anything like that
 
 # UP TOP TO DO:
-# TODO: Round all outputs to two decimal places.
-# TODO: Add a global q for quit at any point in the program.
-# DONE: Maybe add delays before each function starts just to make it look nicer.
-# TODO: Generate a chart for profitability.
-# TODO: Add descriptions of each strategy at the start.
+# TODO Round all outputs to two decimal places.
+# TODO Add a global q for quit at any point in the program.
+# DONE Maybe add delays before each function starts just to make it look nicer.
+# TODO Generate a chart for profitability.
+# TODO Add descriptions of each strategy at the start.
 
 
 import pandas
@@ -139,7 +139,7 @@ def marriedPut():
 
 
 # Spreads, start with credit.
-# TODO: Simulation as to changes in the strike prices and the profit change.
+# TODO Simulation as to changes in the strike prices and the profit change.
 
 def creditSpread():
     # First need the price of the high premium option to be sold.
