@@ -8,7 +8,7 @@
 # DONE Maybe add delays before each function starts just to make it look nicer.
 # TODO Generate a chart for profitability.
 # TODO Add descriptions of each strategy at the start.
-# TODO Add straddles.
+# Done Add straddles.
 # TODO Add strangles.
 # TODO Add iron condors.
 # TODO Add butterfly spreads.
@@ -172,8 +172,44 @@ def debitSpread():
     # And print it.
     print("The investor has netted $" + str(netPremium) + " on the trade currently.")
 
+def straddle():
+    # Price of the put option.
+    putPrice = pyip.inputNum('Enter the premium paid for the put option:')
 
-option = pyip.inputMenu(['call', 'put', 'covered call', 'married put', 'credit spread', 'debit spread', 'q'],
+    # Price of the call option.
+    callPrice = pyip.inputNum('Enter the price of the call option:')
+
+    # Strike price.
+    strikePrice = pyip.inputNum('Enter the strike price of both options: ')
+
+    premTotal = putPrice + callPrice
+    print('The price to put together the straddle is $' + premTotal ', not considering the price of the stock.')
+
+    # Get the cost of the stock.
+    pricePaid = pyip.inputNum('Enter the price paid for the stock: ')
+
+    # Determine the break even point.
+    breakEvenRise = pricePaid + premTotal
+    breakEvenFall = pricePaid - premTotal
+    print('The investor breaks even at $' + breakEvenRise + ' and '+ breakEvenFall + '.')
+
+    # Calculate the current profit or loss.
+    # Get the stock's current price.
+    stockPrice = pyip.inputNum('Enter the current price of the stock: ')
+
+    # TODO Test calculation of position of a straddle.
+
+    # Current position.
+    position1 = stockPrice - breakEvenRise
+    position2 = stockPrice - breakEvenFall
+
+    if position1 > position2:
+        print("The investor currently has a position of $" + position1 + " with the strategy.")
+    else:
+        print("The investor currently has a position of $" + position2 + " with the strategy.")
+
+
+option = pyip.inputMenu(['call', 'put', 'covered call', 'married put', 'credit spread', 'debit spread', 'straddle', 'q'],
                         numbered=True)
 
 if option == 'call':
@@ -232,6 +268,15 @@ elif option == 'debit spread':
     time.sleep(execSleep)
     print('Starting the debit spread calculation.')
     debitSpread()
+elif option == 'straddle':
+    print('Straddle selected.')
+    time.sleep(startSleep)
+    print('A straddle involves the purchase of a put and a call at the same strike price and expiration date. Profit '
+          'occurs when the stock rices or falls more than the premium paid on the strategy. Profit potential is '
+          'unlimited.')
+    time.sleep(execSleep)
+    print('Starting the straddle calculation.')
+    straddle()
 elif option == 'q':
     time.sleep(execSleep)
     print('lol q is not a strategy, you just stopped the program.')
