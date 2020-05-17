@@ -7,7 +7,7 @@
 # TODO Add a global q for quit at any point in the program.
 # DONE Maybe add delays before each function starts just to make it look nicer.
 # TODO Generate a chart for profitability.
-# TODO Add descriptions of each strategy at the start.
+# DONE Add descriptions of each strategy at the start.
 # DONE Add straddles.
 # TODO Add strangles.
 # TODO Add iron condors.
