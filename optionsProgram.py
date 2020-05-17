@@ -12,6 +12,7 @@
 # TODO Add strangles.
 # TODO Add iron condors.
 # TODO Add butterfly spreads.
+# TODO Add new lines in the explanations.
 
 
 import pandas
@@ -111,6 +112,7 @@ def coveredCall():
 # Calculating a married put, where the the investor has some downside insurance if the stock were to fall
 # below the put price.Capital preserving strategy and limits the downside risk.
 
+# MARRIED PUT IS FINE NOW DISREGARD
 # I think this one needs to be worked on and understood more to properly write the code.
 # THIS NEEDS TO BE WORKED ON BUT THE SKELETON IS THERE
 # Maybe not even include this? Keep it for now.
@@ -172,18 +174,20 @@ def debitSpread():
     # And print it.
     print("The investor has netted $" + str(netPremium) + " on the trade currently.")
 
+# Straddle, buying call and put at same date and exercise, profit on down or up swings.
+# TODO Determine necessary percentage swing.
 def straddle():
     # Price of the put option.
-    putPrice = pyip.inputNum('Enter the premium paid for the put option:')
+    putPrice = pyip.inputNum('Enter the premium paid for the put option: ')
 
     # Price of the call option.
-    callPrice = pyip.inputNum('Enter the price of the call option:')
+    callPrice = pyip.inputNum('Enter the price of the call option: ')
 
     # Strike price.
     strikePrice = pyip.inputNum('Enter the strike price of both options: ')
 
     premTotal = putPrice + callPrice
-    print('The price to put together the straddle is $' + premTotal ', not considering the price of the stock.')
+    print('The price to put together the straddle is $' + str(premTotal) + ', not considering the price of the stock.')
 
     # Get the cost of the stock.
     pricePaid = pyip.inputNum('Enter the price paid for the stock: ')
@@ -191,22 +195,29 @@ def straddle():
     # Determine the break even point.
     breakEvenRise = pricePaid + premTotal
     breakEvenFall = pricePaid - premTotal
-    print('The investor breaks even at $' + breakEvenRise + ' and '+ breakEvenFall + '.')
+    print('The investor breaks even at $' + str(breakEvenRise) + ' and $'+ str(breakEvenFall) + '.')
 
     # Calculate the current profit or loss.
     # Get the stock's current price.
     stockPrice = pyip.inputNum('Enter the current price of the stock: ')
 
-    # TODO Test calculation of position of a straddle.
+    # Done Test calculation of position of a straddle.
+    # TODO Calculate. for straddle put and call position separately, and then combine them, but either cannot be negative.
 
-    # Current position.
-    position1 = stockPrice - breakEvenRise
-    position2 = stockPrice - breakEvenFall
+    # Current positions of each option.
+    callPosition = stockPrice - strikePrice
+    putPosition = strikePrice - stockPrice
 
-    if position1 > position2:
-        print("The investor currently has a position of $" + position1 + " with the strategy.")
-    else:
-        print("The investor currently has a position of $" + position2 + " with the strategy.")
+    # Calculate total
+    if callPosition < 0 and putPosition < 0:
+        position = putPosition + callPosition
+    elif putPosition < 0:
+        position = callPosition
+    elif callPosition < 0:
+        position = putPosition
+
+    # And print it
+    print('The current position of the strategy is $' + str(position) + '.')
 
 
 option = pyip.inputMenu(['call', 'put', 'covered call', 'married put', 'credit spread', 'debit spread', 'straddle', 'q'],
@@ -235,7 +246,7 @@ elif option == 'covered call':
     print('A covered call is a transaction where an investor sells a call option and owns the equivalent amount of '
           'the underlying security. To execute, the investor is long the asset then sells calls on the same asset to '
           'generate income. This is a neutral strategy, meaning the investor only expects a minor increase in the '
-          'underlying stock price of the written call opttion. Usually employed if an investor wants to hold the '
+          'underlying stock price of the written call option. Usually employed if an investor wants to hold the '
           'stock for a long time but does not expect near term appreciation, so generates income from the option '
           'premium.')
     time.sleep(execSleep)
