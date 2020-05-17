@@ -202,7 +202,7 @@ def straddle():
     stockPrice = pyip.inputNum('Enter the current price of the stock: ')
 
     # Done Test calculation of position of a straddle.
-    # TODO Calculate. for straddle put and call position separately, and then combine them, but either cannot be negative.
+    # Done Calculate. for straddle put and call position separately, and then combine them, but either cannot be negative.
 
     # Current positions of each option.
     callPosition = stockPrice - strikePrice
@@ -212,9 +212,9 @@ def straddle():
     if callPosition < 0 and putPosition < 0:
         position = putPosition + callPosition
     elif putPosition < 0:
-        position = callPosition
+        position = callPosition - premTotal
     elif callPosition < 0:
-        position = putPosition
+        position = putPosition - premTotal
 
     # And print it
     print('The current position of the strategy is $' + str(position) + '.')
