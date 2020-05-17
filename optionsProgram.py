@@ -175,7 +175,7 @@ def debitSpread():
     print("The investor has netted $" + str(netPremium) + " on the trade currently.")
 
 # Straddle, buying call and put at same date and exercise, profit on down or up swings.
-# TODO Determine necessary percentage swing.
+# Done Determine necessary percentage swing.
 def straddle():
     # Price of the put option.
     putPrice = pyip.inputNum('Enter the premium paid for the put option: ')
@@ -188,6 +188,11 @@ def straddle():
 
     premTotal = putPrice + callPrice
     print('The price to put together the straddle is $' + str(premTotal) + ', not considering the price of the stock.')
+
+    # Necessary swing.
+    swing = premTotal / strikePrice
+    swing = "{:.2%}".format(swing)
+    print('To make a profit, the investor would need a swing of ' + swing + ' in the price of the asset.')
 
     # Get the cost of the stock.
     pricePaid = pyip.inputNum('Enter the price paid for the stock: ')
@@ -202,7 +207,7 @@ def straddle():
     stockPrice = pyip.inputNum('Enter the current price of the stock: ')
 
     # DONE Test calculation of position of a straddle.
-    # DONE Calculate. for straddle put and call position separately, and then combine them, but either cannot be negative.
+    # DONE Calculate, for straddle put and call position separately, and then combine them, but either cannot be neg.
 
     # Current positions of each option.
     callPosition = stockPrice - strikePrice
