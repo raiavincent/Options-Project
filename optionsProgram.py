@@ -8,11 +8,11 @@
 # DONE Maybe add delays before each function starts just to make it look nicer.
 # TODO Generate a chart for profitability.
 # TODO Add descriptions of each strategy at the start.
-# Done Add straddles.
+# DONE Add straddles.
 # TODO Add strangles.
 # TODO Add iron condors.
 # TODO Add butterfly spreads.
-# TODO Add new lines in the explanations.
+# DONE Add new lines in the explanations.
 
 
 import pandas
@@ -201,8 +201,8 @@ def straddle():
     # Get the stock's current price.
     stockPrice = pyip.inputNum('Enter the current price of the stock: ')
 
-    # Done Test calculation of position of a straddle.
-    # Done Calculate. for straddle put and call position separately, and then combine them, but either cannot be negative.
+    # DONE Test calculation of position of a straddle.
+    # DONE Calculate. for straddle put and call position separately, and then combine them, but either cannot be negative.
 
     # Current positions of each option.
     callPosition = stockPrice - strikePrice
@@ -227,7 +227,7 @@ if option == 'call':
     print('Call option selected.')
     time.sleep(startSleep)
     print('A call option gives an investor the right, but not the obligation, to buy a stock at a certain price, '
-          'the strike price.')
+          '\nthe strike price.')
     time.sleep(definitionSleep)
     print('Starting call option calculation.')
     time.sleep(execSleep)
@@ -236,7 +236,7 @@ elif option == 'put':
     print('Put option selected.')
     time.sleep(startSleep)
     print('A put option gives an investor the right, but not the obligation, to sell a stock at a certain price, '
-          'the strike price.')
+          '\nthe strike price.')
     time.sleep(execSleep)
     print('Starting put option calculation.')
     putCalc()
@@ -244,11 +244,11 @@ elif option == 'covered call':
     print('Covered call strategy selected.')
     time.sleep(startSleep)
     print('A covered call is a transaction where an investor sells a call option and owns the equivalent amount of '
-          'the underlying security. To execute, the investor is long the asset then sells calls on the same asset to '
-          'generate income. This is a neutral strategy, meaning the investor only expects a minor increase in the '
-          'underlying stock price of the written call option. Usually employed if an investor wants to hold the '
-          'stock for a long time but does not expect near term appreciation, so generates income from the option '
-          'premium.')
+          '\nthe underlying security. To execute, the investor is long the asset then sells calls on the same asset to '
+          '\ngenerate income. This is a neutral strategy, meaning the investor only expects a minor increase in the '
+          '\nunderlying stock price of the written call option. Usually employed if an investor wants to hold the '
+          '\nstock for a long time but does not expect near term appreciation, so generates income from the option '
+          '\npremium.')
     time.sleep(execSleep)
     print('Starting the calculation of a covered call.')
     coveredCall()
@@ -256,8 +256,8 @@ elif option == 'married put':
     print('Married put strategy selected.')
     time.sleep(startSleep)
     print('A married put is a strategy where an investor is long the asset and purchases an at the money put option '
-          'on the same asset to protect against depreciation of said asset. The investor essentially protects against '
-          'the downside risk yet can still participate in any gains from the upside. ')
+          '\non the same asset to protect against depreciation of said asset. The investor essentially protects against '
+          '\nthe downside risk yet can still participate in any gains from the upside. ')
     time.sleep(execSleep)
     print('Starting the calculation of a married put.')
     marriedPut()
@@ -265,8 +265,8 @@ elif option == 'credit spread':
     print('Credit spread selected.')
     time.sleep(startSleep)
     print('A credit spread involves the sale of a high premium option followed by the purchase of a lower premium '
-          'option. Premium received from writing is greater than purchasing, resulting in a premium. This is the '
-          'maximum profit.')
+          '\noption. Premium received from writing is greater than purchasing, resulting in a premium. This is the '
+          '\nmaximum profit.')
     time.sleep(execSleep)
     print('Starting the credit spread calculation.')
     creditSpread()
@@ -274,8 +274,8 @@ elif option == 'debit spread':
     print('Debit spread selected.')
     time.sleep(startSleep)
     print('A debit spread involves buying a high premium option and then selling an option at a lower premium. This '
-          'results in a premium paid by the investor. Used to offset the costs associated with owning long options '
-          'positions.')
+          '\nresults in a premium paid by the investor. Used to offset the costs associated with owning long options '
+          '\npositions.')
     time.sleep(execSleep)
     print('Starting the debit spread calculation.')
     debitSpread()
@@ -283,8 +283,8 @@ elif option == 'straddle':
     print('Straddle selected.')
     time.sleep(startSleep)
     print('A straddle involves the purchase of a put and a call at the same strike price and expiration date. Profit '
-          'occurs when the stock rices or falls more than the premium paid on the strategy. Profit potential is '
-          'unlimited.')
+          '\noccurs when the stock rices or falls more than the premium paid on the strategy. Profit potential is '
+          '\nunlimited.')
     time.sleep(execSleep)
     print('Starting the straddle calculation.')
     straddle()
