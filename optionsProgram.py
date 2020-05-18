@@ -13,6 +13,7 @@
 # TODO Add iron condors.
 # TODO Add butterfly spreads.
 # DONE Add new lines in the explanations.
+# TODO Implement yFinance to pull the current price of the stock.
 
 
 import pandas
@@ -112,7 +113,7 @@ def coveredCall():
 # Calculating a married put, where the the investor has some downside insurance if the stock were to fall
 # below the put price.Capital preserving strategy and limits the downside risk.
 
-# MARRIED PUT IS FINE NOW DISREGARD
+# ||||MARRIED PUT IS FINE NOW DISREGARD|||| as of 5/16/2020
 # I think this one needs to be worked on and understood more to properly write the code.
 # THIS NEEDS TO BE WORKED ON BUT THE SKELETON IS THERE
 # Maybe not even include this? Keep it for now.
@@ -142,7 +143,6 @@ def marriedPut():
     print('Maximum Risk: ' + str(maximumRisk))
     print('Investor is risking ' + str(percentageRisk) + ' of the outlay.')
     print('The investor has a maximum profit that is unlimited.')
-
 
 # Spreads, start with credit.
 # TODO Simulation as to changes in the strike prices and the profit change.
