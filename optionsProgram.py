@@ -14,7 +14,10 @@
 # TODO Add butterfly spreads.
 # DONE Add new lines in the explanations.
 # TODO Implement yFinance to pull the current price of the stock.
-
+# TODO Change the prompts.
+# Dissect this for prompting:
+#bT = pyip.inputMenu(['a','b'],
+#  ...:   ...: prompt = 'What type of bread would you like ?\n* %s \n* %s \n* %s \n')
 
 import pandas
 import matplotlib
@@ -224,6 +227,20 @@ def straddle():
     # And print it
     print('The current position of the strategy is $' + str(position) + '.')
 
+# Strangle, holding a call and a put on the same asset with different strike prices, same expiration date.
+# Good if thought that the underlying security will move in price do not know the direction.
+# TODO Long straddle calculation.
+# TODO Start short straddle.
+
+def strangle():
+    # Going long or short?
+    choice = pyip.inputMenu(['long, short']), numbered=True)
+
+    # What to do if long or short.
+    if choice == 'long':
+        print("A long strangle involves buying an out of the money call and an out of the money put. "
+    "\n The call option's strike price is higher than the asset's price, and the put's is lower. Risk is limited " \
+    "\n the premium paid for the option."
 
 option = pyip.inputMenu(['call', 'put', 'covered call', 'married put', 'credit spread', 'debit spread', 'straddle', 'q'],
                         numbered=True)
