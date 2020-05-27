@@ -242,7 +242,7 @@ def strangle():
     "\n The call option's strike price is higher than the asset's price, and the put's is lower. Risk is limited " \
     "\n the premium paid for the option."
 
-#TODO Fix invalid syntax line 245git
+# TODO Fix invalid syntax line 245git
 option = pyip.inputMenu(['call', 'put', 'covered call', 'married put', 'credit spread', 'debit spread', 'straddle', 'q'],
                         numbered=True)
 
