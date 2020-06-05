@@ -232,19 +232,22 @@ def straddle():
 # TODO Long straddle calculation.
 # TODO Start short straddle.
 
-def strangle():
+# Commenting out until I finish, was causing problems
+#def strangle():
     # Going long or short?
-    choice = pyip.inputMenu(['long, short'], numbered=True)
+#    choice = pyip.inputMenu(['long, short'], numbered=True)
 
     # What to do if long or short.
-    if choice == 'long':
-        print("A long strangle involves buying an out of the money call and an out of the money put. "
-    "\n The call option's strike price is higher than the asset's price, and the put's is lower. Risk is limited " \
-    "\n the premium paid for the option."
+#    if choice == 'long':
+#        print("A long strangle involves buying an out of the money call and an out of the money put. "
+#    "\n The call option's strike price is higher than the asset's price, and the put's is lower. Risk is limited " \
+#    "\n the premium paid for the option."
+#    else:
+#        print('hi')
+# DONE Fix invalid syntax line 246
 
-# TODO Fix invalid syntax line 245
 option = pyip.inputMenu(['call', 'put', 'covered call', 'married put', 'credit spread', 'debit spread', 'straddle', 'q'],
-                        numbered=True)
+                        numbered= True)
 
 if option == 'call':
     print('Call option selected.')
