@@ -16,7 +16,7 @@
 # TODO Implement yFinance to pull the current price of the stock.
 # TODO Change the prompts.
 # Dissect this for prompting:
-#bT = pyip.inputMenu(['a','b'],
+# bT = pyip.inputMenu(['a','b'],
 #  ...:   ...: prompt = 'What type of bread would you like ?\n* %s \n* %s \n* %s \n')
 
 import pandas
@@ -147,6 +147,7 @@ def marriedPut():
     print('Investor is risking ' + str(percentageRisk) + ' of the outlay.')
     print('The investor has a maximum profit that is unlimited.')
 
+
 # Spreads, start with credit.
 # TODO Simulation as to changes in the strike prices and the profit change.
 
@@ -177,6 +178,7 @@ def debitSpread():
     # And print it.
     print("The investor has netted $" + str(netPremium) + " on the trade currently.")
 
+
 # Straddle, buying call and put at same date and exercise, profit on down or up swings.
 # Done Determine necessary percentage swing.
 def straddle():
@@ -203,7 +205,7 @@ def straddle():
     # Determine the break even point.
     breakEvenRise = pricePaid + premTotal
     breakEvenFall = pricePaid - premTotal
-    print('The investor breaks even at $' + str(breakEvenRise) + ' and $'+ str(breakEvenFall) + '.')
+    print('The investor breaks even at $' + str(breakEvenRise) + ' and $' + str(breakEvenFall) + '.')
 
     # Calculate the current profit or loss.
     # Get the stock's current price.
@@ -227,27 +229,33 @@ def straddle():
     # And print it
     print('The current position of the strategy is $' + str(position) + '.')
 
+
 # Strangle, holding a call and a put on the same asset with different strike prices, same expiration date.
 # Good if thought that the underlying security will move in price do not know the direction.
 # TODO Long straddle calculation.
 # TODO Start short straddle.
 
-# Commenting out until I finish, was causing problems
-#def strangle():
+def strangle():
     # Going long or short?
-#    choice = pyip.inputMenu(['long, short'], numbered=True)
-
+    choice = pyip.inputMenu(['long', 'short'], numbered=True)
     # What to do if long or short.
-#    if choice == 'long':
-#        print("A long strangle involves buying an out of the money call and an out of the money put. "
-#    "\n The call option's strike price is higher than the asset's price, and the put's is lower. Risk is limited " \
-#    "\n the premium paid for the option."
-#    else:
-#        print('hi')
+    if choice == 'long':
+        print("A long strangle involves buying an out of the money call and an out of the money put."
+              "\nThe call option's strike price is higher than the asset's price, and the put's is lower."
+              "\nRisk is limited to the premium paid for the option")
+    elif choice == 'short':
+        print(
+            'A short strangle involves the sale of an out of the put and an out of the money call. Strategy is '
+            '\noverall neutral and limited potential for profit. Profit occurs when the strike price of the underlying '
+            '\nstock trades in a narrow range between the two break even points. Max profit is net premium received for '
+            '\nwriting the two options.')
+
+
 # DONE Fix invalid syntax line 246
 
-option = pyip.inputMenu(['call', 'put', 'covered call', 'married put', 'credit spread', 'debit spread', 'straddle', 'q'],
-                        numbered= True)
+option = pyip.inputMenu(
+    ['call', 'put', 'covered call', 'married put', 'credit spread', 'debit spread', 'straddle', 'strangle', 'q'],
+    numbered=True)
 
 if option == 'call':
     print('Call option selected.')
@@ -314,6 +322,17 @@ elif option == 'straddle':
     time.sleep(execSleep)
     print('Starting the straddle calculation.')
     straddle()
+elif option == 'strangle':
+    print('Strangle selected.')
+    time.sleep((startSleep))
+    print('A strangle is a strategy where an investor owns a call and a put option, each having different strike '
+          '\nprices, on the same asset and each having the same expiration date. This strategy works well when when an '
+          '\ninvestor expects a large price movement in the near future, but unsure of the direction. Profitable with '
+          '\nsharp swings.')
+    time.sleep(execSleep)
+    print('Starting the strangle calculation.')
+    time.sleep(execSleep)
+    strangle()
 elif option == 'q':
     time.sleep(execSleep)
     print('lol q is not a strategy, you just stopped the program.')
