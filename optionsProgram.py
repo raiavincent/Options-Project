@@ -226,6 +226,8 @@ def straddle():
     elif callPosition < 0:
         position = putPosition - premTotal
 
+# TODO Check the if statements for straddle calculation, concern on the second elif
+
     # And print it
     print('The current position of the strategy is $' + str(position) + '.')
 
@@ -234,6 +236,9 @@ def straddle():
 # Good if thought that the underlying security will move in price do not know the direction.
 # TODO Long straddle calculation.
 # TODO Start short straddle.
+# TODO Checks to see if the strike prices are correct for the strategy
+
+
 
 def strangle():
     # Going long or short?
@@ -252,7 +257,6 @@ def strangle():
         print('The strangle will not work as the strike price of the call option should be higher than the asset price.')
         elif putStrike > currentPrice:
         print('The strangle will not work as the strike price of the put option should be lower than the asset price.')
-        
 
     elif choice == 'short':
         print(
