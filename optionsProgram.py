@@ -245,7 +245,7 @@ def strangle():
               "\nRisk is limited to the premium paid for the option")
     elif choice == 'short':
         print(
-            'A short strangle involves the sale of an out of the put and an out of the money call. Strategy is '
+            'A short strangle involves the sale of an out of the money put and an out of the money call. Strategy is '
             '\noverall neutral and limited potential for profit. Profit occurs when the strike price of the underlying '
             '\nstock trades in a narrow range between the two break even points. Max profit is net premium received for '
             '\nwriting the two options.')
