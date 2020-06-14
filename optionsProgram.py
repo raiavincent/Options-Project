@@ -252,16 +252,10 @@ def strangle():
         print("A long strangle involves buying an out of the money call and an out of the money put."
               "\nThe call option's strike price is higher than the asset's price, and the put's is lower."
               "\nRisk is limited to the premium paid for the option")
-        # Gather inputs
-        # This all should be under the long calculation
-        callStrike = pyip.inputNum('Enter the strike price of the call: ')
         if callStrike < currentPrice:
         print('The strangle will not work as the strike price of the call option should be higher than the asset price.')
-        putStrike = pyip.inputNum('Enter the strike price of the put: ')
         if putStrike > currentPrice:
         print('The strangle will not work as the strike price of the put option should be lower than the asset price.')
-        currentPrice = pyip.inputNum('Enter the current price of the stock: ')
-        premiumPaid = pyip.inputNum('Enter the total premium paid for the strategy: ')
 
         callStanding = callStrike - currentPrice
         putStanding = putStrike - currentPrice  # check this for some reason I cannot do the random mental math rn.
@@ -276,8 +270,14 @@ def strangle():
             '\noverall neutral and limited potential for profit. Profit occurs when the strike price of the underlying '
             '\nstock trades in a narrow range between the two break even points. Max profit is net premium received for '
             '\nwriting the two options.')
-
-
+        # need to get inputs for selling the options
+        callIncome = pyip.inputNum('Enter the sell price of the written call: ')
+        putIncome = pyip.inputNum('Enter the sell price of the written put: ')
+        wroteIncome = callIncome + putIncome
+        callStanding = callStrike - currentPrice
+        putStanding = putStrike - currentPrice  # check this for some reason I cannot do the random mental math rn.
+        # TODO Check short strangle calculation.
+        currentLongPosition = wroteIncome - callStanding - putStanding
 
 
 # DONE Fix invalid syntax line 246
