@@ -257,7 +257,7 @@ def strangle():
         print('The strangle will not work as the strike price of the call option should be higher than the asset price.')
         elif putStrike > currentPrice:
         print('The strangle will not work as the strike price of the put option should be lower than the asset price.')
-
+    
     elif choice == 'short':
         print(
             'A short strangle involves the sale of an out of the money put and an out of the money call. Strategy is '
