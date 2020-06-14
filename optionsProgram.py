@@ -13,7 +13,7 @@
 # TODO Add iron condors.
 # TODO Add butterfly spreads.
 # DONE Add new lines in the explanations.
-# TODO Implement yFinance to pull the current price of the stock.
+# DONE Implement yFinance to pull the current price of the stock.
 # TODO Change the prompts.
 # Dissect this for prompting:
 # bT = pyip.inputMenu(['a','b'],
@@ -277,7 +277,7 @@ def strangle():
             '\nstock trades in a narrow range between the two break even points. Max profit is net premium received for '
             '\nwriting the two options.')
 
-        
+
 
 
 # DONE Fix invalid syntax line 246
