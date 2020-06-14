@@ -280,7 +280,7 @@ def strangle():
         currentLongPosition = wroteIncome - callStanding - putStanding
 
 def ironCondor:
-
+    # Get the necessary inputs for the four options.
 
 # DONE Fix invalid syntax line 246
 
