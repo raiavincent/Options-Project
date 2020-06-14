@@ -9,7 +9,7 @@
 # TODO Generate a chart for profitability.
 # DONE Add descriptions of each strategy at the start.
 # DONE Add straddles.
-# TODO Add strangles.
+# DONE Add strangles.
 # TODO Add iron condors.
 # TODO Add butterfly spreads.
 # DONE Add new lines in the explanations.
@@ -279,11 +279,14 @@ def strangle():
         # TODO Check short strangle calculation.
         currentLongPosition = wroteIncome - callStanding - putStanding
 
+def ironCondor:
+
 
 # DONE Fix invalid syntax line 246
 
 option = pyip.inputMenu(
-    ['call', 'put', 'covered call', 'married put', 'credit spread', 'debit spread', 'straddle', 'strangle', 'q'],
+    ['call', 'put', 'covered call', 'married put', 'credit spread', 'debit spread', 'straddle', 'strangle',
+     'iron condor', 'q'],
     numbered=True)
 
 if option == 'call':
@@ -362,6 +365,15 @@ elif option == 'strangle':
     print('Starting the strangle calculation.')
     time.sleep(execSleep)
     strangle()
+elif option == 'iron condor':
+    print("Iron condor selected. That's metal AF.")
+    time.sleep((startSleep))
+    print('An iron condor is a strategy consisting of four options, two calls (one short one long) and two puts (one '
+          '\nshort one long), along with four different strike prices and same expiration date. The strategy profits'
+          '\nfrom low volatility in the underlying asset. Profit is maximized when the underlying asset closes between'
+          '\nthe middle strike prices at expiration.')
+    time.sleep(execSleep)
+    ironCondor()
 elif option == 'q':
     time.sleep(execSleep)
     print('lol q is not a strategy, you just stopped the program.')
