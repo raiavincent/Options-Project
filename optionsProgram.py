@@ -236,9 +236,7 @@ def straddle():
 # Good if thought that the underlying security will move in price do not know the direction.
 # TODO Long straddle calculation.
 # TODO Start short straddle.
-# TODO Checks to see if the strike prices are correct for the strategy
-
-
+# DONE Checks to see if the strike prices are correct for the strategy
 
 def strangle():
     # Going long or short?
@@ -253,11 +251,20 @@ def strangle():
         callStrike = pyip.inputNum('Enter the strike price of the call: ')
         putStrike = pyip.inputNum('Enter the strike price of the put: ')
         currentPrice = pyip.inputNum('Enter the current price of the stock: ')
+        premiumPaid = pyip.inputNum('Enter the total premium paid for the strategy: ')
+
+        callStanding = callStrike - currentPrice
+        putStanding = putStrike - currentPrice #check this for some reason I cannot do the random mental math rn.
+
+        currentPosition = callStanding + putStanding - premiumPaid
+
+        print('The current position in the strategy is ' + str(currentPosition) + '.')
         if callStrike < currentPrice:
         print('The strangle will not work as the strike price of the call option should be higher than the asset price.')
         elif putStrike > currentPrice:
         print('The strangle will not work as the strike price of the put option should be lower than the asset price.')
-    
+
+
     elif choice == 'short':
         print(
             'A short strangle involves the sale of an out of the money put and an out of the money call. Strategy is '
