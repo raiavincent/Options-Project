@@ -10,7 +10,7 @@
 # DONE Add descriptions of each strategy at the start.
 # DONE Add straddles.
 # DONE Add strangles.
-# TODO Add iron condors.
+# DONE Add iron condors.
 # TODO Add butterfly spreads.
 # DONE Add new lines in the explanations.
 # DONE Implement yFinance to pull the current price of the stock.
@@ -279,6 +279,7 @@ def strangle():
         # TODO Check short strangle calculation.
         currentLongPosition = wroteIncome - callStanding - putStanding
 
+# TODO Add iron condor calculation.
 def ironCondor:
     # Get the necessary inputs for the four options.
     currentPrice = pyip.inputNum('Enter the current price of the underlying asset: ')
@@ -289,7 +290,7 @@ def ironCondor:
     print('The strike price of the OTM or ATM call must be greater than the current price of the underlying asset.')
     otmatmCall = pyip.inputNum('Enter the strike price of the OTM or ATM call sold: ', greaterThan=currentPrice)
     otmatmCallIncome = pyip.inputNum('Enter the income from selling that call: ')
-    
+
 # DONE Fix invalid syntax line 246
 
 option = pyip.inputMenu(
