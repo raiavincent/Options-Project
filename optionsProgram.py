@@ -283,13 +283,20 @@ def strangle():
 def ironCondor:
     # Get the necessary inputs for the four options.
     currentPrice = pyip.inputNum('Enter the current price of the underlying asset: ')
-    print('The strike price of the OTM put must be less than the current price of the underlying asset.')
-    otmPut = pyip.inputNum('Enter the strike price of the out of the money put option: ', lessThan=currentPrice)
-    otmaatmPut = pyip.inputNum('Enter the strike price of the OTM or ATM put sold: ')
+    print('First, buy one out of the money put with a strike price below the current price of the asset.')
+    otmPutStrike = pyip.inputNum('Enter the strike price of that call option: ', lessThan=currentPrice)
+    otmPutStrikePrice = pyip.inputNum('Enter the price paid for that put: ')
+    print('Next, sell one OTM or ATM put with a strike price near the current price of the underlying asset.')
+    otmatmPutStrike = pyip.inputNum('Enter the strike price of the OTM or ATM put sold: ')
     otmatmPutIncome = pyip.inputNum('Enter the income from selling that put: ')
-    print('The strike price of the OTM or ATM call must be greater than the current price of the underlying asset.')
-    otmatmCall = pyip.inputNum('Enter the strike price of the OTM or ATM call sold: ', greaterThan=currentPrice)
+    print('Next, sell one OTM or ATM call with a strike price above the current price of the underlying asset.')
+    otmatmCallStrike = pyip.inputNum('Enter the strike price of that call: ', greaterThan=currentPrice)
     otmatmCallIncome = pyip.inputNum('Enter the income from selling that call: ')
+    print('Finally, buy an OTM call with a strike price further above the current price of the asset.')
+    furtherOTMCallStrike = pyip.inputNum('Enter the strike price of that OTM call: ', greaterThan=otmatmCallStrike)
+    furtherOTMCallPrice = pyip.inputNum('Enter the price paid for that call: ')
+
+    ironCondorStanding = otmatmCallIncome -
 
 # DONE Fix invalid syntax line 246
 
