@@ -285,7 +285,7 @@ def ironCondor:
     currentPrice = pyip.inputNum('Enter the current price of the underlying asset: ')
     print('First, buy one out of the money put with a strike price below the current price of the asset.')
     otmPutStrike = pyip.inputNum('Enter the strike price of that call option: ', lessThan=currentPrice)
-    otmPutStrikePrice = pyip.inputNum('Enter the price paid for that put: ')
+    otmPutPrice = pyip.inputNum('Enter the price paid for that put: ')
     print('Next, sell one OTM or ATM put with a strike price near the current price of the underlying asset.')
     otmatmPutStrike = pyip.inputNum('Enter the strike price of the OTM or ATM put sold: ')
     otmatmPutIncome = pyip.inputNum('Enter the income from selling that put: ')
@@ -296,7 +296,9 @@ def ironCondor:
     furtherOTMCallStrike = pyip.inputNum('Enter the strike price of that OTM call: ', greaterThan=otmatmCallStrike)
     furtherOTMCallPrice = pyip.inputNum('Enter the price paid for that call: ')
 
-    ironCondorStanding = otmatmCallIncome -
+    ironCondorCost = otmatmCallIncome - furtherOTMCallPrice + otmatmPutIncome - otmPutPrice
+
+    # TODO Iron condor price movement affecting profit.
 
 # DONE Fix invalid syntax line 246
 
