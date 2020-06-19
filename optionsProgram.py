@@ -296,9 +296,14 @@ def ironCondor:
     furtherOTMCallStrike = pyip.inputNum('Enter the strike price of that OTM call: ', greaterThan=otmatmCallStrike)
     furtherOTMCallPrice = pyip.inputNum('Enter the price paid for that call: ')
 
-    ironCondorCost = otmatmCallIncome - furtherOTMCallPrice + otmatmPutIncome - otmPutPrice
+    ironCondorCredit = otmatmCallIncome - furtherOTMCallPrice + otmatmPutIncome - otmPutPrice
 
     # TODO Iron condor price movement affecting profit.
+
+    if currentPrice > otmPutStrike and currentPrice < otmatmCallStrike:
+        standing = ironCondorCredit
+        print('The profit has been maximized and comes out to $' + ironCondorCredit + '.')
+    elif currentPrice
 
 # DONE Fix invalid syntax line 246
 
