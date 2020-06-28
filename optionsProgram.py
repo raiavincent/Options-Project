@@ -280,6 +280,8 @@ def strangle():
         currentLongPosition = wroteIncome - callStanding - putStanding
 
 # TODO Add iron condor calculation.
+# oh my god this is complicated
+
 def ironCondor:
     # Get the necessary inputs for the four options.
     currentPrice = pyip.inputNum('Enter the current price of the underlying asset: ')
@@ -297,19 +299,19 @@ def ironCondor:
     furtherOTMCallPrice = pyip.inputNum('Enter the price paid for that call: ')
 
     ironCondorCredit = otmatmCallIncome - furtherOTMCallPrice + otmatmPutIncome - otmPutPrice
-
+    print('The maximum profit of the strategy is ' + str(ironCondorCredit))
     # TODO Iron condor price movement affecting profit.
 
     if currentPrice > otmPutStrike and currentPrice < otmatmCallStrike:
         standing = ironCondorCredit
         print('The profit has been maximized and comes out to $' + ironCondorCredit + '.')
-    elif currentPrice
+    elif currentPrice > furtherOTMCallStrike and currentPrice < otmPutStrike:
+        standing =   # max loss
 
 # DONE Fix invalid syntax line 246
 
 option = pyip.inputMenu(
-    ['call', 'put', 'covered call', 'married put', 'credit spread', 'debit spread', 'straddle', 'strangle',
-     'iron condor', 'q'],
+    ['call', 'put', 'covered call', 'married put', 'credit spread', 'debit spread', 'straddle', 'strangle', 'q'],
     numbered=True)
 
 if option == 'call':
